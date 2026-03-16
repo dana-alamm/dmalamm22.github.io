@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dana Alamm · CIS Portfolio</title>
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #fdeff2 0%, #f8e8ed 100%);
+            color: #2d3e50;
+            line-height: 1.6;
+        }
+
+        /* smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* navbar creative */
+        .navbar {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.2rem 2.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+            border-bottom: 2px solid rgba(255,215,220,0.6);
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2.8rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #4a3b4c;
+            background: rgba(255,245,240,0.7);
+            padding: 0.5rem 1.6rem;
+            border-radius: 80px;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 4px 8px rgba(255,200,210,0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-menu a:hover {
+            background: #ffcad4;
+            color: #2f1f3a;
+            transform: translateY(-5px);
+            border-color: #f9acb5;
+            box-shadow: 0 18px 20px -12px #fbb1b9;
+        }
+
+        /* container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* glass card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 20px 40px -18px rgba(180,120,140,0.4);
+            border: 2px solid rgba(255,240,240,0.8);
+        }
+
+        /* profile section */
+        .profile-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid white;
+            box-shadow: 0 25px 30px -12px #d6a2ad;
+            transition: 0.4s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.02) rotate(2deg);
+            border-color: #ffe3e8;
+        }
+
+        .name-title h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: linear-gradient(130deg, #553a4b, #ac6f8b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .badge-id {
+            background: #ffd9df;
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #3d2e3a;
+            display: inline-block;
+            margin: 0.5rem 0;
+            border: 2px solid white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            background: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 120px;
+            text-decoration: none;
+            color: #3a2b39;
+            font-weight: 600;
+            box-shadow: 0 6px 14px #f5ced6;
+            border: 1px solid #ffe7eb;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-link:hover {
+            background: #ffc1cc;
+            color: #232323;
+            transform: scale(1.03);
+        }
+
+        .mail-link {
+            background: #a2798f;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 3px solid white;
+        }
+
+        /* skills chips */
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .skill-chip {
+            background: #ffffffd4;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #382b39;
+            border: 2px solid white;
+            box-shadow: 0 5px 8px #fad0d8;
+            transition: 0.2s;
+        }
+
+        .skill-chip:hover {
+            background: #feb3c2;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* table soft */
+        .tool-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .tool-table td {
+            background: rgba(255,235,235,0.5);
+            padding: 1rem 2rem;
+            border-radius: 80px 20px 20px 80px;
+            border: 2px solid white;
+        }
+
+        .tool-table a {
+            text-decoration: none;
+            color: #9f637b;
+            font-weight: 700;
+            border-bottom: 3px dotted #faa5b5;
+        }
+
+        .future-box {
+            background: #f9eef1;
+            border-radius: 2rem;
+            padding: 2rem;
+            border-left: 14px solid #ffb3c1;
+            margin-top: 2rem;
+            box-shadow: inset 0 0 0 2px white;
+        }
+
+        /* project & certs */
+        .project-grid, .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .project-card, .cert-card {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            border: 2px solid white;
+            box-shadow: 0 16px 22px -12px #deb0bb;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover, .cert-card:hover {
+            transform: translateY(-12px) rotate(0.5deg);
+            background: white;
+        }
+
+        .btn-cv {
+            background: #b2849b;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            cursor: pointer;
+            border: 3px solid white;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-cv:hover {
+            background: #c9678b;
+            padding: 1rem 3rem;
+        }
+
+        /* contact form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 1.2rem 1.8rem;
+            border-radius: 100px;
+            border: 3px solid white;
+            background: rgba(255,245,245,0.7);
+            font-size: 1.1rem;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #faa0b0;
+            background: white;
+        }
+
+        .submit-btn {
+            background: #a56f87;
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            border-radius: 100px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            border: 4px solid white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<body>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="#home"><i class="fas fa-home"></i> HOME</a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i> WORK</a></li>
+            <li><a href="#certs"><i class="fas fa-certificate"></i> CERTS</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="home">
+        <!-- profile card -->
+        <div class="glass-card">
+            <div class="profile-row">
+                <!-- image here — REPLACE URL with your photo -->
+                <img src="https://i.ibb.co/0Rj0xbG9/dana-jpg.jpg" alt="Dana" class="profile-img">
+                <div class="name-title">
+                    <h1>Dana Mohammad Alamm</h1>
+                    <div class="badge-id"><i class="fas fa-id-card"></i> 161519 · CIS · Fourth Year</div>
+                  <div class="social-links">
+    <a href="https://github.com/dana-alamm" class="social-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://www.linkedin.com/in/dana-alamm-260426278/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="mailto:dmalamm22@cit.just.edu.jo" class="mail-link"><i class="fas fa-envelope"></i> dmalamm22@cit.just.edu.jo</a>
+</div>
+                <a href="./Dana's-cv.pdf" download class="btn-cv"><i class="fas fa-download"></i> Download CV</a>
+                </div>
+            </div>
+
+            <!-- soft skills -->
+            <h2>✨ KEY SOFT SKILLS</h2>
+            <div class="skills-cloud">
+                <span class="skill-chip">critical thinking</span>
+                <span class="skill-chip">conflict resolution</span>
+                <span class="skill-chip">teamwork</span>
+                <span class="skill-chip">time management</span>
+                <span class="skill-chip">analytical thinking</span>
+                <span class="skill-chip">adaptability</span>
+            </div>
+
+            <!-- fav tools -->
+            <h2>⚙️ FAVOURITE LANGUAGES & TOOLS</h2>
+            <table class="tool-table">
+                <tr><td>🐦 Flutter</td><td><a href="https://flutter.dev" target="_blank">flutter.dev →</a></td></tr>
+                <tr><td>🎯 Dart</td><td><a href="https://dart.dev" target="_blank">dart.dev →</a></td></tr>
+                <tr><td>🔥 Firebase</td><td><a href="https://firebase.google.com" target="_blank">firebase.google.com →</a></td></tr>
+                <tr><td>🟢 Node.js</td><td><a href="https://nodejs.org" target="_blank">nodejs.org →</a></td></tr>
+                <tr><td>🐍 Python</td><td><a href="https://python.org" target="_blank">python.org →</a></td></tr>
+            </table>
+
+            <!-- future paragraph -->
+            <div class="future-box">
+                <h2>🔮 Where Do I See Myself in 4 Years?</h2>
+                <p>In four years, I envision myself as a senior Flutter developer creating innovative mobile applications for major tech companies. My goal is to master cross-platform development and contribute to open-source projects in the Dart ecosystem. I plan to learn backend technologies like Firebase and Node.js to become a full-stack mobile developer. Additionally, I hope to launch my own mobile app startup that solves real-world problems in the Middle East. I also aim to mentor junior developers and share my knowledge through tech workshops.</p>
+            </div>
+        </div>
+
+        <!-- projects section -->
+        <div class="glass-card" id="projects">
+            <h2><i class="fas fa-laptop-code"></i> MY PROJECT</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Online Book Store</h3>
+                    <p>Built a full-stack mobile e-commerce platform using Flutter and Firebase for seamless book browsing and management.
+
+Implemented secure user authentication and personalized profiles via Firebase Auth.
+
+Developed a real-time catalog system using Cloud Firestore for dynamic inventory updates and book category filtering.
+
+Designed a responsive and user-friendly UI/UX, focusing on digital shopping flows and efficient media delivery via Firebase Storage.</p>
+                    <a href="https://github.com/dana-alamm/Online-Book-Store" target="_blank" style="color:#a56f87;">🔗 GitHub</a>
+                </div>
+                <!-- أضيفي مشروع آخر إذا بدك -->
+            </div>
+        </div>
+
+       <!-- certifications -->
+<div class="glass-card" id="certs">
+    <h2><i class="fas fa-award"></i> CERTIFICATIONS</h2>
+    <div class="certs-grid">
+        <!-- الشهادة الأولى: Web Development Bootcamp -->
+        <div class="cert-card">
+            <img src="https://i.ibb.co/ttZwQm9/Screenshot-2026-03-16-061802.png" 
+                 alt="The Complete 2024 Web Development Bootcamp" 
+                 style="width: 100%; max-width: 280px; height: auto; border-radius: 20px; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto;">
+            <h3 style="color:#a56f87;">The Complete 2024 Web Development Bootcamp</h3>
+            <p><i class="fas fa-calendar-alt"></i> Sept 29, 2024 · 61.5 hours</p>
+            <p><i class="fas fa-chalkboard-teacher"></i> Dr. Angela Yu</p>
+            <p><small>Certificate No: UC-071484f2-88f9-46d2-98cf-170502470210</small></p>
+        </div>
+        
+        <!-- الشهادة الثانية: Data Analytics and Business Intelligence -->
+        <div class="cert-card">
+            <img src="https://i.ibb.co/PsdRK7v6/Screenshot-2026-03-16-061820.png" 
+                 alt="Data Analytics and Business Intelligence Technology" 
+                 style="width: 100%; max-width: 280px; height: auto; border-radius: 20px; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto;">
+            <h3 style="color:#a56f87;">Data Analytics and Business Intelligence</h3>
+            <p><i class="fas fa-calendar-alt"></i> November 19, 2025</p>
+            <p><i class="fas fa-university"></i> AL HUSSEIN Technical University</p>
+            <p><small>Reference: 167406118</small></p>
+        </div>
+    </div>
+</div></div>
+
+        <!-- contact page -->
+        <div class="glass-card" id="contact">
+            <h2>📬 CONTACT ME</h2>
+            <form id="contactForm" class="contact-form" onsubmit="return validateForm()">
+                <div class="form-group"><input type="text" id="fullname" placeholder="Full Name"></div>
+                <div class="form-group"><input type="email" id="email" placeholder="Email Address"></div>
+                <div class="form-group">
+                    <select id="country">
+                        <option value="" disabled selected>Country</option>
+                        <option>Jordan</option><option>UAE</option><option>Saudi Arabia</option><option>Egypt</option><option>Qatar</option>
+                    </select>
+                </div>
+                <div class="form-group"><textarea id="comments" rows="3" placeholder="Your message..."></textarea></div>
+                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> SUBMIT</button>
+            </form>
+        </div>
+    </div>
+
+    <footer style="text-align:center; padding:2rem; color:#6f5b66;">
+        ⚡ Dana Mohammad Alamm · 161519 · designed with 💖
+    </footer>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const country = document.getElementById('country').value;
+            const comments = document.getElementById('comments').value.trim();
+
+            if (!name || !email || !country || !comments) {
+                alert('❌ Please fill in ALL fields before submitting.');
+                return false;
+            }
+            alert('✅ Thank you! Your message has been sent (simulated).');
+            document.getElementById('contactForm').reset();
+            return false;
+        }
+
+        // navigation scroll & hide
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if(target) target.scrollIntoView({behavior: 'smooth'});
+            });
+        });
+    </script>
+</body>
+</html>
